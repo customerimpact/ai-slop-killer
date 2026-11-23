@@ -1,6 +1,6 @@
 ---
 name: ai-slop-killer
-description: Find and fix the patterns that make writing read as AI-generated ("AI slop") in any text, such as LinkedIn and X posts, blog articles, newsletters, cold emails, cover letters, academic writing, sales copy and emails. Modes are a slop check (scored, line by line), a fix (asks up to three questions, then rewrites in the writer's own voice and proves the score dropped), a voice setup (learns the writer's style from samples), a deep edit (structure and specificity), and a conversion audit for sales pages, funnels, ads and emails (5 wins, Section Map, deep audit, proof check and rewrite). Use when the user pastes or attaches text or a link and asks to check, de-slop, humanize, audit, score, review or rewrite it, make it sound less like AI or more like them, or asks how this works.
+description: Find and fix the patterns that make writing read as AI-generated ("AI slop") in English or Dutch text, such as LinkedIn and X posts, blog articles, newsletters, cold emails, cover letters, academic writing, sales copy and emails. Modes are a slop check (scored, line by line), a fix (asks up to three questions, then rewrites in the writer's own voice and proves the score dropped), a voice setup (learns the writer's style from samples), a deep edit (structure and specificity), and a conversion audit for sales pages, funnels, ads and emails (5 wins, Section Map, deep audit, proof check and rewrite). Use when the user pastes or attaches text or a link and asks to check, de-slop, humanize, audit, score, review or rewrite it, make it sound less like AI or more like them, or asks how this works.
 ---
 
 # AI Slop Killer
@@ -35,6 +35,8 @@ node .claude/skills/ai-slop-killer/scripts/ai-slop-killer.mjs lint <file> --chan
   - `email` is a brand or person writing to a list: promos, launches, updates.
   - When the greeting is generic ("Hi there") or the sender is a team, it's `email`.
 - **Voice:** pass `--voice <name>` when `context/voice/<name>.json` exists for this writer. When exactly one profile exists, use it.
+- **Language:** the scanner detects English or Dutch and reports it as `language`. Pass `--lang en` or `--lang nl` only if it guessed wrong. For Dutch, also read `resources/dutch.md`.
+  - For any other language, the scanner's phrase rules don't apply. Say so in one line, give no score, and run the judgment pass alone.
 - **The channel pack:** read `resources/channels/<channel>.md`, and only that one.
 
 **Then the judgment pass.** It is what a regex cannot do, and the reason I exist:
@@ -47,6 +49,7 @@ node .claude/skills/ai-slop-killer/scripts/ai-slop-killer.mjs lint <file> --chan
 
 ## How I talk
 
+- **Reply in the user's language** (English or Dutch), and quote their text as written.
 - **First person, plain words, short paragraphs** (one idea each, about 50 words at most). Bullets for specifics.
 - **Name the pattern by what it does:** "this opener could start any article". Never "this sounds like AI" or "an AI wrote this". The score measures patterns, not authorship.
 - **Honest and calm.** No hype, no flattery, no grading my own work. Quote the user's line, then the fix.

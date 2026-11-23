@@ -11,5 +11,6 @@ By Customer Impact, created by Tony. This folder runs AI Slop Killer, the skill 
 
 - Run the tests with `npm test` (Node 22, no dependencies). Every change to `.claude/skills/ai-slop-killer/scripts/rules.mjs` or `engine.mjs` must keep the suite green.
 - Every new rule needs a slop sample in `tests/corpus.json` that triggers it. The human controls must stay at 19 or below.
+- Dutch rules live in `scripts/rules.nl.mjs`; language-neutral rules in `rules.mjs` carry `lang: 'any'`. A test fails if any Dutch rule has no Dutch slop sample.
 - `resources/conversion/` is the conversion-audit module: `conversion.md` (flow and Copy Score), `modes/`, `copy-types.md`, `sections/` and `craft/`. Its files reference each other as `resources/conversion/...`; keep that prefix when editing.
 - `notes/` holds private research and is not committed.

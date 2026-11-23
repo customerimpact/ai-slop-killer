@@ -26,6 +26,7 @@ Specific detail is what makes writing sound human, and only the writer has it. L
 - **Cut, don't replace.** Most slop is padding. A shorter, specific version beats a reworded one.
 - **Facts:** use their answers. Never invent a fact. A missing fact becomes `[what goes here]`.
 - **Channel norms** come from `resources/channels/<channel>.md`.
+- **Headings the user asked to keep stay word for word,** because they often carry SEO and links. When one is itself a pattern, leave it and suggest a new wording under the rewrite.
 - **Don't overcorrect into new tells:**
   - no swapping em dashes for hyphens
   - no fake typos
@@ -35,7 +36,7 @@ Specific detail is what makes writing sound human, and only the writer has it. L
 
 ## 4. Prove it
 
-Save the rewrite to `audits/<piece>-fix-YYYY-MM-DD.md`, then run:
+Save the rewrite to `audits/<piece>-fix-YYYY-MM-DD.md` (or only to the path the user names), then run:
 
 ```
 node .claude/skills/ai-slop-killer/scripts/ai-slop-killer.mjs compare <original> <rewrite> --channel <channel> [--voice <name>] --json

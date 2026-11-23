@@ -8,7 +8,7 @@
 4. Optional: say "learn my voice" and share 3–5 things you wrote yourself. From then on I keep your habits and flag only what isn't you.
 5. Selling something? Say "run the 5 wins audit on this page" (or "Section Map", "deep audit" or "proof check") for a scored conversion audit of a sales page, funnel, ad or email.
 
-Works on LinkedIn and X posts, blog articles, newsletters, emails, cold emails, cover letters, academic writing and sales copy.
+Works in English and Dutch, on LinkedIn and X posts, blog articles, newsletters, emails, cold emails, cover letters, academic writing and sales copy.
 
 You can also run the scanner on its own:
 
