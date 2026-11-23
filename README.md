@@ -164,7 +164,7 @@ Yes. It works on any English text, including drafts from ChatGPT, Claude, Gemini
 English only. The rules are written for English, so text in other languages gets no score.
 
 **Is it free?**
-Yes. The skill and the scanner are free to use.
+Yes. The skill and the scanner are free to use. Claude Code itself needs a Claude plan or an API key; the scanner on its own needs only Node.
 
 **Does my text leave my machine?**
 The scanner runs locally. The judgment pass and rewrites run in your own Claude session, under your own account.
