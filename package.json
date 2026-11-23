@@ -1,0 +1,16 @@
+{
+  "name": "ai-slop-killer",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Find and fix the patterns that make writing read as AI-generated, plus a conversion audit for sales copy.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "lint": "node .claude/skills/ai-slop-killer/scripts/ai-slop-killer.mjs lint"
+  },
+  "author": "Tony (Customer Impact)",
+  "homepage": "https://customerimpact.be"
+}

@@ -1,0 +1,379 @@
+[
+  {
+    "id": "slop-email-flowdesk",
+    "channel": "email",
+    "kind": "slop",
+    "file": "email.md",
+    "expect": [
+      "slop-opener",
+      "negation-pivot-split",
+      "promo-fluff",
+      "er-not-er",
+      "copula-avoidance",
+      "whether-youre",
+      "filler-transition"
+    ],
+    "minScore": 70
+  },
+  {
+    "id": "slop-linkedin-quit",
+    "channel": "linkedin",
+    "kind": "slop",
+    "file": "linkedin.md",
+    "expect": [
+      "not-x-not-y",
+      "colon-reveal",
+      "platitude",
+      "question-reveal",
+      "em-dash",
+      "inflated-importance",
+      "engagement-bait",
+      "hashtag-block"
+    ],
+    "minScore": 70
+  },
+  {
+    "id": "slop-linkedin-hiring",
+    "channel": "linkedin",
+    "kind": "slop",
+    "text": "Hiring isn't about skills.\n\nIt's about character.\n\nLast week, we hired someone with zero experience.\n\nWhy?\n\nBecause she showed up.\n\nCuriosity. Grit. Heart.\n\nThat's what matters.\n\nAgree?\n\n#Hiring #Leadership #Culture",
+    "expect": [
+      "negation-pivot-split",
+      "staccato",
+      "broetry",
+      "engagement-bait",
+      "hashtag-block"
+    ],
+    "minScore": 45
+  },
+  {
+    "id": "slop-blog-intro",
+    "channel": "blog",
+    "kind": "slop",
+    "text": "## The Ultimate Guide To Remote Team Productivity\n\nIn today's rapidly evolving digital landscape, remote work has become more important than ever. As organizations navigate the complexities of distributed teams, it's important to note that productivity plays a crucial role in long-term success.\n\nIn this comprehensive guide, we'll delve into proven strategies, best practices, and actionable insights. Let's dive in!",
+    "expect": [
+      "title-case-heading",
+      "slop-opener",
+      "promo-fluff",
+      "inflated-importance",
+      "filler-phrase",
+      "ai-vocab",
+      "dive-in"
+    ],
+    "minScore": 70
+  },
+  {
+    "id": "slop-blog-conclusion",
+    "channel": "blog",
+    "kind": "slop",
+    "text": "In conclusion, effective time management is not only a skill but also a mindset. By leveraging the right tools, fostering healthy habits, and embracing flexibility, professionals can unlock their full potential. Ultimately, the journey to productivity is a marathon, not a sprint. The future remains bright for those who commit to continuous improvement.",
+    "expect": [
+      "slop-closer",
+      "not-only-but-also",
+      "ai-vocab",
+      "promo-fluff"
+    ],
+    "minScore": 60
+  },
+  {
+    "id": "slop-blog-history",
+    "channel": "blog",
+    "kind": "slop",
+    "text": "Nestled in the heart of the valley, the town boasts a rich tapestry of cultural heritage. Its bustling market stands as a testament to centuries of trade, highlighting the enduring spirit of its people. Experts say the region played a pivotal role in shaping the broader economy, underscoring its importance to this day.",
+    "expect": [
+      "inflated-importance",
+      "participle-tail",
+      "vague-attribution",
+      "ai-vocab"
+    ],
+    "minScore": 60
+  },
+  {
+    "id": "slop-x-thread",
+    "channel": "x",
+    "kind": "slop",
+    "text": "Most people use ChatGPT wrong. The top 1% do this instead:\n\n🧵 A thread on prompting that will change how you work forever 👇\n\n1/ Stop writing vague prompts. Start giving context.\n\n2/ You don't need better tools. You need better questions.",
+    "expect": [
+      "most-people-few",
+      "stop-start",
+      "you-dont-need",
+      "engagement-bait"
+    ],
+    "minScore": 50
+  },
+  {
+    "id": "slop-x-hot-take",
+    "channel": "x",
+    "kind": "slop",
+    "text": "Hot take: AI won't replace you. Someone using AI will.\n\nIf you're not learning AI today, you're already falling behind.\n\nThe truth? The window is closing. 🚀",
+    "expect": [
+      "fomo-threat",
+      "question-reveal",
+      "wont-replace-you"
+    ],
+    "minScore": 40
+  },
+  {
+    "id": "slop-newsletter",
+    "channel": "newsletter",
+    "kind": "slop",
+    "text": "Hey friends,\n\nWelcome back to another edition of The Weekly Edge! This week, we're diving deep into the world of habit formation.\n\nHere's the thing: building habits isn't just about willpower — it's about systems. Furthermore, research shows that small changes compound over time.\n\nLet's unpack this together.",
+    "expect": [
+      "dive-in",
+      "colon-reveal",
+      "not-just",
+      "em-dash",
+      "filler-transition",
+      "vague-attribution"
+    ],
+    "minScore": 60
+  },
+  {
+    "id": "slop-cold-email",
+    "channel": "cold-email",
+    "kind": "slop",
+    "text": "Hi Sarah,\n\nI hope this email finds you well. I came across your profile and was truly impressed by your impressive work at Acme.\n\nAt Growthly, we empower B2B teams to streamline their outreach and unlock unprecedented growth. Whether you're a startup or an enterprise, our cutting-edge platform seamlessly integrates with your existing stack.\n\nWould you be open to a quick 15-minute call next week?\n\nLooking forward to hearing from you!",
+    "expect": [
+      "ai-vocab",
+      "promo-fluff",
+      "whether-youre",
+      "stock-cliche"
+    ],
+    "minScore": 50
+  },
+  {
+    "id": "slop-cover-letter",
+    "channel": "cover-letter",
+    "kind": "slop",
+    "text": "Dear Hiring Manager,\n\nI am writing to express my keen interest in the Marketing Manager position at your esteemed organization. With a proven track record of driving results and a passion for innovation, I am confident that I would be a valuable addition to your dynamic team.\n\nThroughout my career, I have consistently demonstrated my ability to navigate complex challenges, foster cross-functional collaboration, and deliver transformative outcomes. I am excited about the opportunity to leverage my skills to contribute to your continued success.",
+    "expect": [
+      "ai-vocab",
+      "stock-cliche"
+    ],
+    "minScore": 35
+  },
+  {
+    "id": "slop-academic",
+    "channel": "academic",
+    "kind": "slop",
+    "text": "Climate change represents one of the most pressing challenges of our time. It is important to note that its effects are multifaceted, encompassing environmental, economic, and social dimensions. Moreover, scholars agree that addressing this issue requires a holistic approach. This essay will delve into the intricate interplay between policy and innovation, highlighting the pivotal role of international cooperation.",
+    "expect": [
+      "filler-phrase",
+      "ai-vocab",
+      "participle-tail",
+      "inflated-importance"
+    ],
+    "minScore": 45
+  },
+  {
+    "id": "slop-sales-page",
+    "channel": "sales",
+    "kind": "slop",
+    "text": "Imagine a world where your inbox manages itself.\n\nIntroducing InboxZen: the game-changing AI assistant that revolutionizes the way you handle email. It's not just a tool, it's a complete productivity ecosystem.\n\n✅ Save hours every week\n✅ Never miss an important message\n✅ Reclaim your focus\n\nJoin thousands of professionals who have already transformed their workflow. Look no further — this is the solution you've been waiting for.",
+    "expect": [
+      "slop-opener",
+      "negation-pivot",
+      "promo-fluff",
+      "emoji-bullet",
+      "em-dash"
+    ],
+    "minScore": 70
+  },
+  {
+    "id": "slop-chatbot-leftovers",
+    "channel": "general",
+    "kind": "slop",
+    "text": "Certainly! Here's a revised version of your bio:\n\nJohn is a seasoned marketing professional with over ten years of experience. He is passionate about helping brands tell their stories.\n\nI hope this helps! Let me know if you'd like any further changes.",
+    "expect": [
+      "chatbot-artifact"
+    ],
+    "minScore": 45
+  },
+  {
+    "id": "slop-invisible-chars",
+    "channel": "general",
+    "kind": "slop",
+    "text": "Our quarterly results​ were strong, and the team​ delivered every milestone​ on time.",
+    "expect": [
+      "invisible-character"
+    ],
+    "minScore": 40
+  },
+  {
+    "id": "slop-uniform-rhythm",
+    "channel": "blog",
+    "kind": "slop",
+    "text": "Effective leaders understand the importance of clear communication with teams. They create environments where every employee feels valued and heard daily. Strong cultures develop when managers consistently model the behaviors they expect. Organizations that prioritize trust tend to retain their best people longer.",
+    "expect": [
+      "uniform-rhythm"
+    ],
+    "minScore": 15
+  },
+  {
+    "id": "slop-no-contractions",
+    "channel": "blog",
+    "kind": "slop",
+    "text": "It is not difficult to see why so many teams struggle with planning. They do not set clear goals, and they are not sure who owns each task. When a deadline arrives, it is often too late to fix the problem. You are left with a backlog that does not move and a team that is tired of meetings. The answer is not more meetings. The answer is a short weekly review where each person names one priority and one blocker. We are not suggesting a new tool. We are suggesting a habit that takes fifteen minutes and that anyone can start on Monday without approval from anyone.",
+    "expect": [
+      "no-contractions",
+      "the-answer-isnt",
+      "repeat-subject-pivot"
+    ],
+    "minScore": 25
+  },
+  {
+    "id": "slop-triad-emphasis",
+    "channel": "linkedin",
+    "kind": "slop",
+    "text": "This conference was incredible. Real conversations, real connections, real opportunities. Grateful for every single person I met this week.",
+    "expect": [
+      "emphasis-triad"
+    ],
+    "minScore": 20
+  },
+  {
+    "id": "slop-smarter",
+    "channel": "general",
+    "kind": "slop",
+    "text": "Our mission is simple: help teams work smarter, not harder. Because better, not bigger, is how great companies grow.",
+    "expect": [
+      "er-not-er"
+    ],
+    "minScore": 30
+  },
+  {
+    "id": "slop-not-because",
+    "channel": "linkedin",
+    "kind": "slop",
+    "text": "I left my corporate job not because I hated it, but because I knew I was meant for more. Sometimes the scariest step is the one that sets you free.",
+    "expect": [
+      "not-because-but-because"
+    ],
+    "minScore": 25
+  },
+  {
+    "id": "slop-title-bold",
+    "channel": "blog",
+    "kind": "slop",
+    "text": "## Why Every Business Needs A Content Strategy\n\n**Content** is the **backbone** of **modern marketing**. Without a **clear plan**, teams **waste time** and **miss opportunities**. A **strategy** gives you **focus**.",
+    "expect": [
+      "title-case-heading",
+      "bold-overuse"
+    ],
+    "minScore": 15
+  },
+  {
+    "id": "slop-question-answered",
+    "channel": "blog",
+    "kind": "slop",
+    "text": "Most marketing teams publish weekly. What does this mean? It means consistency matters more than volume, and that is where most teams go wrong.",
+    "expect": [
+      "question-answered"
+    ],
+    "minScore": 15
+  },
+  {
+    "id": "slop-whether",
+    "channel": "sales",
+    "kind": "slop",
+    "text": "Whether you're a first-time founder or a seasoned executive, our coaching program meets you where you are and helps you grow.",
+    "expect": [
+      "whether-youre"
+    ],
+    "minScore": 20
+  },
+  {
+    "id": "slop-stop-start",
+    "channel": "linkedin",
+    "kind": "slop",
+    "text": "Stop chasing clients. Start attracting them. The best businesses I know never pitch; their reputation does the selling.",
+    "expect": [
+      "stop-start"
+    ],
+    "minScore": 20
+  },
+  {
+    "id": "human-linkedin-ops",
+    "channel": "linkedin",
+    "kind": "human",
+    "text": "We moved our support queue from email to a shared inbox in March. Three things happened that I didn't expect.\n\nResponse time dropped from about 9 hours to 2, mostly because nobody could quietly sit on a ticket anymore. Two of our quieter engineers started answering customers directly, and the customers liked it. And our refund rate went up a little, which I'm still trying to understand.\n\nIf you've made the same switch, did refunds move for you too?",
+    "maxScore": 19
+  },
+  {
+    "id": "human-blog-bike",
+    "channel": "blog",
+    "kind": "human",
+    "text": "I bought the cheapest commuter bike in the shop, a grey aluminium thing with a rack and mudguards. It weighs 14 kilos and the gears click like a stapler.\n\nAfter six months and roughly 2,000 km, the only repair was a new chain. The brakes squeal in the rain. I'd still buy it again, because it's the bike nobody wants to steal and I lock it outside the station without thinking.\n\nIf you ride more than an hour a day, spend more. For the 20-minute run to work, this is plenty.",
+    "maxScore": 19
+  },
+  {
+    "id": "human-email-invoice",
+    "channel": "email",
+    "kind": "human",
+    "text": "Hi Marta,\n\nQuick one: invoice 2041 went out with last month's rate on it. I've attached the corrected version, which is €340 lower. You don't need to do anything if you haven't paid yet; just use the new one.\n\nSorry for the mix-up.\n\nTom",
+    "maxScore": 19
+  },
+  {
+    "id": "human-cold-email",
+    "channel": "cold-email",
+    "kind": "human",
+    "text": "Hi Sarah,\n\nYour post about Acme's sales team losing a day a week to CRM updates stuck with me. We built a small tool that logs calls from the phone automatically, and the two teams using it got that day back within a month.\n\nIt might not fit how Acme works. If it's useful, I can show you the 4-minute version on Thursday or Friday.\n\nPieter",
+    "maxScore": 19
+  },
+  {
+    "id": "human-newsletter",
+    "channel": "newsletter",
+    "kind": "human",
+    "text": "This week I tried writing every issue draft by hand first. It was slower, about 40 minutes more per draft, and I hated the first two days.\n\nBy Thursday the drafts were shorter. I cut the bits I couldn't be bothered to copy out, which turns out to be a decent editing rule.\n\nNext week: what happened when I let three readers edit an issue before it went out.",
+    "maxScore": 19
+  },
+  {
+    "id": "human-cover-letter",
+    "channel": "cover-letter",
+    "kind": "human",
+    "text": "Dear Ms Peeters,\n\nI'm applying for the marketing manager role. For the last three years I ran marketing at a 12-person software company, where I took the newsletter from 800 to 9,400 subscribers and rebuilt the pricing page that now brings in a third of our trials.\n\nI'd like to work somewhere with a bigger team so I can learn from people better at paid search than I am. Your job post mentions a move into France, and I've run campaigns there before, in French.\n\nKind regards,\nLotte Janssens",
+    "maxScore": 19
+  },
+  {
+    "id": "human-academic",
+    "channel": "academic",
+    "kind": "human",
+    "text": "We measured nitrate levels in 42 wells across two provinces between 2019 and 2023. Concentrations rose in 31 of them. The increase was largest near fields that switched from grassland to maize, which matches earlier findings by Van Dijk et al. (2018). We cannot rule out changes in sampling depth, which varied by up to 3 metres between visits.",
+    "maxScore": 19
+  },
+  {
+    "id": "human-sales-page",
+    "channel": "sales",
+    "kind": "human",
+    "text": "The course is six video lessons, about two hours in total, and a workbook you print out. You'll write your first newsletter issue in lesson three.\n\nIt costs €49. If you finish the lessons and don't send an issue within 30 days, email me and I'll refund you. About one in twenty people ask, and I've never argued with anyone.",
+    "maxScore": 19
+  },
+  {
+    "id": "human-x-post",
+    "channel": "x",
+    "kind": "human",
+    "text": "Spent the morning deleting 1,200 unused Figma components. The file opens in 4 seconds now instead of 40. Nobody noticed they were gone.",
+    "maxScore": 19
+  },
+  {
+    "id": "human-literal-words",
+    "channel": "blog",
+    "kind": "human",
+    "text": "We drove up the coast road to paint the landscape near the lighthouse. My sister brought her watercolours; I brought sandwiches and a folding chair. The wind took two of her sheets into the sea, and she laughed so hard she had to sit down.",
+    "maxScore": 19
+  },
+  {
+    "id": "human-dash-voice",
+    "channel": "blog",
+    "kind": "human",
+    "text": "I kept the old desk. It wobbles, it's too low, and the drawer sticks in summer. My grandfather built it in 1961 for his accounting work, and I still find his pencil marks under the top when I clean it.",
+    "maxScore": 19
+  },
+  {
+    "id": "human-recipe",
+    "channel": "blog",
+    "kind": "human",
+    "text": "Fry the onions slowly, at least 20 minutes, until they're the colour of weak tea. Then add the paprika off the heat so it doesn't burn. If you only have sweet paprika, a pinch of chilli flakes gets you close enough.",
+    "maxScore": 19
+  }
+]
