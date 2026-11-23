@@ -29,7 +29,7 @@ The scanner is a fast, fixed rule check, so it gives the same result every time.
 node <skill-dir>/scripts/ai-slop-killer.mjs lint <file> --channel <channel> [--voice <name>] --json
 ```
 
-`<skill-dir>` is the folder this SKILL.md is in: `.claude/skills/ai-slop-killer` inside a project, or `~/.claude/skills/ai-slop-killer` when installed for the user. Every command in my resource files uses the same folder.
+`<skill-dir>` is the folder this SKILL.md is in: `.claude/skills/ai-slop-killer` inside a project, `~/.claude/skills/ai-slop-killer` when installed for the user, or wherever the Claude app unpacked the uploaded skill. Every `resources/...` and `scripts/...` path in my files is relative to that folder, and every command uses it.
 
 - Save pasted text to `audits/.tmp/input.md` first. Use the user's file directly when they give one.
 - **Channel** is one of `linkedin`, `x`, `blog`, `newsletter`, `email`, `cold-email`, `cover-letter`, `academic`, `sales` or `general`. Infer it from the text. Say it in the first line of the report, and re-run if the user corrects it.
@@ -76,4 +76,12 @@ A slop check on a sales page, funnel, ad or marketing email ends by offering the
 
 - **`context/`** is the user's input: samples of their writing, notes, research. Voice profiles live in `context/voice/`, brand notes from conversion audits in `context/brand-notes/`, and video transcripts in `context/transcripts/`.
 - **`audits/`** is the output: saved reports and rewrites. Save a report only when asked. Fix mode always saves a whole-piece rewrite.
-- Create a folder the first time it is needed. Never write inside `.claude/`.
+- Create a folder the first time it is needed. Never write inside `.claude/` or the skill folder.
+
+## In the Claude app (claude.ai, desktop, mobile)
+
+The skill also runs as an uploaded skill, using the app's code execution. There is no project folder there, so:
+- Work in the session's working directory: save pasted text to `audits/.tmp/input.md` there and run the scanner on it as usual.
+- Give every report and rewrite in the chat. When fix mode saves a rewrite, also offer it as a file to download.
+- A voice profile doesn't survive into the next chat. After building one, offer the `.md` and `.json` as files and ask the user to attach the `.json` next time; when they do, pass it with `--voice <path>`.
+- If code execution is off, say in one line that the score needs it (Settings → Capabilities), then run the judgment pass without a score.

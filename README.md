@@ -1,6 +1,6 @@
 # AI Slop Killer: a free Claude skill that removes AI slop from your writing
 
-**Find the patterns that make writing read as AI-generated, see exactly where they are, and fix them in your own voice.** A free skill for [Claude Code](https://claude.com/claude-code), with a fast rule scanner that has zero dependencies.
+**Find the patterns that make writing read as AI-generated, see exactly where they are, and fix them in your own voice.** A free skill for Claude and [Claude Code](https://claude.com/claude-code): download the zip, add it as a skill, done. The rule scanner inside has zero dependencies.
 
 [![Claude Code skill](https://img.shields.io/badge/Claude%20Code-skill-d97757)](#install-in-one-minute)
 [![Zero dependencies](https://img.shields.io/badge/dependencies-0-2ea44f)](package.json)
@@ -76,7 +76,17 @@ Today we have 40 clients in 6 countries, and every one of them gets a live dashb
 
 ## Install in one minute
 
-You need [Claude Code](https://claude.com/claude-code) and Node 22 or later.
+### In the Claude app (claude.ai, desktop)
+
+1. Download **[ai-slop-killer.zip](https://github.com/customerimpact/ai-slop-killer/releases/latest/download/ai-slop-killer.zip)**.
+2. In Claude, open **Settings → Capabilities**, make sure code execution is on, and upload the zip under **Skills**.
+3. Start a chat, paste a draft and say "check this".
+
+Skills need a paid Claude plan. In the app, reports and rewrites come back in the chat, and your voice profile is given to you as a file to attach next time.
+
+### In Claude Code
+
+You need [Claude Code](https://claude.com/claude-code) and Node 22 or later. Unzip the same file into `~/.claude/skills/`, or clone the repo:
 
 **For all your projects:**
 
@@ -164,7 +174,7 @@ Yes. It works on any English text, including drafts from ChatGPT, Claude, Gemini
 English only. The rules are written for English, so text in other languages gets no score.
 
 **Is it free?**
-Yes. The skill and the scanner are free to use. Claude Code itself needs a Claude plan or an API key; the scanner on its own needs only Node.
+Yes. The skill and the scanner are free to use. You need a Claude plan that includes skills (or Claude Code with an API key); the scanner on its own needs only Node.
 
 **Does my text leave my machine?**
 The scanner runs locally. The judgment pass and rewrites run in your own Claude session, under your own account.

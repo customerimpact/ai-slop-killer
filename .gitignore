@@ -1,3 +1,4 @@
 audits/.tmp/
 node_modules/
 notes/
+dist/
