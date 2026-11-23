@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 // AI Slop Killer CLI. No dependencies.
-//   lint [file|-] [--channel c] [--lang en|nl] [--voice name|path.json] [--json]   (language is detected when --lang is left out)
+//   lint [file|-] [--channel c] [--voice name|path.json] [--json]
 //   compare <before> <after> [--channel c] [--voice ...] [--json]
 //   voice <name> <sample files...>      (writes context/voice/<name>.json and .md)
 //   strip <file>                        (prints the text with invisible characters removed)
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { lint, stripInvisible, detectLang } from './engine.mjs';
+import { lint, stripInvisible } from './engine.mjs';
 import { buildVoice, voiceToMarkdown } from './voice.mjs';
 
 const args = process.argv.slice(2);
@@ -28,7 +28,7 @@ function loadVoice(v) {
 }
 
 function report(r, title = 'Slop check') {
-  const lines = [`${title}: ${r.score}/100 (${r.band}) · ${r.words} words · channel: ${r.channel} · language: ${r.lang}`, r.bandNote, ''];
+  const lines = [`${title}: ${r.score}/100 (${r.band}) · ${r.words} words · channel: ${r.channel}`, r.bandNote, ''];
   if (!r.findings.length) lines.push('No patterns found.');
   for (const f of r.findings) {
     lines.push(`L${f.line} [${f.severity}] ${f.rule}: "${f.match}"`);
@@ -41,21 +41,16 @@ function report(r, title = 'Slop check') {
 try {
   if (cmd === 'lint') {
     const channel = flag('channel');
-    const lang = flag('lang');
     const voice = loadVoice(flag('voice'));
     const json = flag('json');
-    const r = lint(read(args[0]), { channel, lang, voice });
+    const r = lint(read(args[0]), { channel, voice });
     console.log(json ? JSON.stringify(r, null, 2) : report(r));
   } else if (cmd === 'compare') {
     const channel = flag('channel');
-    const lang = flag('lang');
     const voice = loadVoice(flag('voice'));
     const json = flag('json');
-    const textBefore = read(args[0]);
-    // Both versions are scored with the same rules, so a translation can't game the comparison.
-    const fixedLang = lang ?? detectLang(textBefore);
-    const before = lint(textBefore, { channel, lang: fixedLang, voice });
-    const after = lint(read(args[1]), { channel, lang: fixedLang, voice });
+    const before = lint(read(args[0]), { channel, voice });
+    const after = lint(read(args[1]), { channel, voice });
     const summary = {
       before: { score: before.score, band: before.band, findings: before.findings.length, high: before.high },
       after: { score: after.score, band: after.band, findings: after.findings.length, high: after.high },

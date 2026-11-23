@@ -1,23 +1,4 @@
 import { RULES, SEVERITY_WEIGHT, CHANNELS } from './rules.mjs';
-import { RULES_NL, NL_STOP, EN_STOP } from './rules.nl.mjs';
-
-export const LANGS = ['en', 'nl'];
-
-// Pick English or Dutch from function-word counts. Short or mixed text defaults to English.
-export function detectLang(text) {
-  let nl = 0, en = 0;
-  for (const w of text.toLowerCase().match(/[\p{L}'’]+/gu) || []) {
-    if (NL_STOP.has(w)) nl++;
-    else if (EN_STOP.has(w)) en++;
-  }
-  return nl >= 5 && nl > en * 1.5 ? 'nl' : 'en';
-}
-
-function rulesFor(lang) {
-  const shared = RULES.filter((r) => r.lang === 'any');
-  if (lang === 'nl') return [...shared, ...RULES_NL];
-  return [...shared, ...RULES.filter((r) => r.lang !== 'any')];
-}
 
 // Rules a writer's own habit can never permit.
 const NEVER_PERMITTED = new Set(['chatbot-artifact', 'invisible-character']);
@@ -98,12 +79,11 @@ function voicePermits(rule, voice) {
 export function lint(text, opts = {}) {
   const channel = CHANNELS.includes(opts.channel) ? opts.channel : 'general';
   const voice = opts.voice || null;
-  const lang = LANGS.includes(opts.lang) ? opts.lang : detectLang(text);
   const ctx = analyse(text);
   const findings = [];
   const permitted = [];
 
-  for (const rule of rulesFor(lang)) {
+  for (const rule of RULES) {
     const mult = rule.channels?.[channel] ?? 1;
     if (mult === 0) continue;
     if (voicePermits(rule, voice)) { permitted.push(rule.id); continue; }
@@ -139,7 +119,7 @@ export function lint(text, opts = {}) {
         fix: 'Bring the rhythm back toward your own.',
       });
     }
-    if (lang === 'en' && v.contractionsPer100 >= 2 && st.contractionsPer100 < 0.5 && st.words >= 80) {
+    if (v.contractionsPer100 >= 2 && st.contractionsPer100 < 0.5 && st.words >= 80) {
       findings.push({
         rule: 'voice-contraction-drift', category: 'voice', severity: 'low', weight: 1, line: 1, index: 0,
         match: `${st.contractionsPer100} contractions per 100 words; you usually use ${v.contractionsPer100}`,
@@ -171,7 +151,6 @@ export function lint(text, opts = {}) {
     band: band.label,
     bandNote: band.note,
     channel,
-    lang,
     words: ctx.words,
     high: findings.filter((f) => f.severity === 'high').length,
     findings,

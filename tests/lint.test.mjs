@@ -63,28 +63,7 @@ test('listicle-three fires on exactly three items, not on four', () => {
   assert.ok(!lint(four).findings.some((f) => f.rule === 'listicle-three'));
 });
 
-test('language detection picks Dutch or English, and --lang overrides it', () => {
-  const nl = 'We bakken sinds 2019 elke zaterdag brood in de garage van mijn schoonvader. In het begin waren het twaalf broden voor de buren.';
-  const en = 'We have baked bread every Saturday since 2019 in my father-in-law\'s garage. At first it was twelve loaves for the neighbours.';
-  assert.equal(lint(nl).lang, 'nl');
-  assert.equal(lint(en).lang, 'en');
-  assert.equal(lint(nl, { lang: 'en' }).lang, 'en');
-});
-
-test('Dutch text never gets English phrase rules, English text never gets Dutch ones', () => {
-  for (const c of corpus) {
-    const r = lint(textOf(c), { channel: c.channel });
-    const nlRules = r.findings.filter((f) => f.rule.startsWith('nl-')).length;
-    if (c.lang === 'nl') assert.equal(r.lang, 'nl', c.id);
-    else assert.equal(nlRules, 0, c.id);
-  }
-});
-
-test('every Dutch rule fires on at least one Dutch slop sample', async () => {
-  const { RULES_NL } = await import('../.claude/skills/ai-slop-killer/scripts/rules.nl.mjs');
-  const fired = new Set();
-  for (const c of corpus.filter((x) => x.lang === 'nl' && x.kind === 'slop')) {
-    for (const f of lint(textOf(c), { channel: c.channel }).findings) fired.add(f.rule);
-  }
-  assert.deepEqual(RULES_NL.map((r) => r.id).filter((id) => !fired.has(id)), []);
+test('uniform-rhythm ignores parallel list items', () => {
+  const list = 'Four reasons it worked:\n\n- The page loaded in under two seconds on phones.\n- The price sat right next to the main button.\n- Every testimonial named a real company and role.\n- The guarantee was written in plain everyday words.\n\nWe shipped it on a Tuesday.';
+  assert.ok(!lint(list).findings.some((f) => f.rule === 'uniform-rhythm'));
 });

@@ -1,5 +1,4 @@
-import { analyse, stats, lint, detectLang } from './engine.mjs';
-import { NL_STOP } from './rules.nl.mjs';
+import { analyse, stats, lint } from './engine.mjs';
 
 const STOP = new Set(`a about above after again against all am an and any are as at be because been before being
 below between both but by can could did do does doing down during each few for from further had has have having he
@@ -14,13 +13,12 @@ export function buildVoice(name, samples) {
   const text = samples.join('\n\n');
   const ctx = analyse(text);
   const st = stats(ctx);
-  const lang = detectLang(text);
 
   // Signature words: frequent content words that appear in at least two samples.
   const counts = new Map();
   const perSample = samples.map((s) => new Set((s.toLowerCase().match(/[\p{L}][\p{L}'’-]{2,}/gu) || [])));
   for (const w of text.toLowerCase().match(/[\p{L}][\p{L}'’-]{2,}/gu) || []) {
-    if (!STOP.has(w) && !NL_STOP.has(w)) counts.set(w, (counts.get(w) || 0) + 1);
+    if (!STOP.has(w)) counts.set(w, (counts.get(w) || 0) + 1);
   }
   const signature = [...counts.entries()]
     .filter(([w, n]) => n >= 2 && (samples.length < 2 || perSample.filter((s) => s.has(w)).length >= 2))
@@ -31,8 +29,8 @@ export function buildVoice(name, samples) {
   const lower = text.toLowerCase();
   const british = (lower.match(/\b\w+(?:our|ise|ised|ising|isation|yse|tre)\b/g) || []).filter((w) => !/^(?:four|your|hour|our|pour|tour|wise|rise|raise|promise|otherwise|exercise|surprise|advise|enterprise|precise|concise|noise|praise|arise|centre)$/.test(w)).length;
   const american = (lower.match(/\b\w+(?:ize|ized|izing|ization|yze)\b/g) || []).length;
-  const iCount = ((lang === 'nl' ? lower.match(/(?<![\p{L}])ik(?![\p{L}])/gu) : text.match(/\bI\b/g)) || []).length;
-  const weCount = ((lang === 'nl' ? lower.match(/(?<![\p{L}])(?:we|wij)(?![\p{L}])/gu) : lower.match(/\bwe\b/g)) || []).length;
+  const iCount = (text.match(/\bI\b/g) || []).length;
+  const weCount = (lower.match(/\bwe\b/g) || []).length;
 
   // Rules the writer trips naturally become permitted, unless the samples are themselves slop.
   const own = lint(text, {});
@@ -48,9 +46,8 @@ export function buildVoice(name, samples) {
     built: new Date().toISOString().slice(0, 10),
     samples: samples.length,
     stats: st,
-    lang,
-    person: iCount >= weCount ? (lang === 'nl' ? 'ik' : 'I') : 'we',
-    spelling: lang === 'nl' ? 'n/a (Dutch)' : british > american ? 'British' : american > british ? 'American' : 'unclear',
+    person: iCount >= weCount ? 'I' : 'we',
+    spelling: british > american ? 'British' : american > british ? 'American' : 'unclear',
     signature,
     permitted,
     warning: sloppySamples ? `The samples score ${own.score}/100 themselves, so no habits were permitted. Use writing from before you used AI tools.` : null,
@@ -64,7 +61,6 @@ export function voiceToMarkdown(v) {
 Built ${v.built} from ${v.samples} samples (${s.words} words).${v.warning ? `\n\n> ${v.warning}` : ''}
 
 - **Sentences:** about ${s.sentenceMean} words on average, spread ${s.sentenceSd} (higher means more varied).
-- **Language:** ${v.lang === 'nl' ? 'Dutch' : 'English'}.
 - **Contractions:** ${s.contractionsPer100} per 100 words.
 - **Punctuation:** em dashes ${s.emDashPer100}, exclamation marks ${s.exclaimPer100}, questions ${s.questionPer100} per 100 words.
 - **Emoji:** ${s.emojiPer100} per 100 words.

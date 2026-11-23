@@ -18,11 +18,11 @@ It scores the writing, never the author. It doesn't detect AI, and it doesn't pr
 
 **Channels:** LinkedIn, X, blog, newsletter, email, cold email, cover letter, academic writing and sales copy.
 
-**Languages:** English and Dutch (Flemish and Netherlands). The language is detected automatically; each has its own rule set and test samples.
+**Language:** English. The rules are written for English text, so other languages get no score.
 
 ## How it works
 
-1. **A fixed rule scanner runs first.** It is plain Node with no dependencies and gives the same result every run: 35 English phrase rules, 31 Dutch phrase rules and 11 shared checks for punctuation, emoji and structure. It catches:
+1. **A fixed rule scanner runs first.** It is plain Node with 46 rules, no dependencies and the same result every run. It catches:
    - negation pivots ("it's not X, it's Y")
    - stock openers and closers
    - formulas ("Stop X. Start Y.")
@@ -61,7 +61,7 @@ node .claude/skills/ai-slop-killer/scripts/ai-slop-killer.mjs voice tony samples
   resources/conversion/    conversion audit: scoring, modes, copy types, 34 section guides, 8 craft guides
 context/                   your input: samples, notes, voice profiles
 audits/                    saved reports and rewrites
-tests/                     regression set (English and Dutch slop samples and human controls), end-to-end outputs, A/B tests
+tests/                     regression set (24 slop samples, 12 human controls) and end-to-end outputs
 ```
 
 ## Development
@@ -70,7 +70,7 @@ tests/                     regression set (English and Dutch slop samples and hu
 npm test
 ```
 
-Every new rule needs a sample in `tests/corpus.json` that triggers it (Dutch samples carry `"lang": "nl"`). The human controls must stay at 19 or below in both languages.
+Every new rule needs a sample in `tests/corpus.json` that triggers it. The human controls must stay at 19 or below.
 
 ---
 

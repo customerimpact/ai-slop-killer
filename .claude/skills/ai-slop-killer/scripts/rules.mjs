@@ -1,7 +1,7 @@
 // AI Slop Killer rule catalog.
 // Each rule: id, category, severity (high | medium | low), message, fix,
 // and either `pattern` (a global regex) or `check(text, ctx)` returning matches.
-// Optional: `lang` ('any' for language-neutral rules; default English), `channels` (weight multipliers per channel, 0 turns a rule off),
+// Optional: `channels` (weight multipliers per channel, 0 turns a rule off),
 // `voiceKey` (a habit the writer's own voice can permit), `cap` (max matches scored).
 
 const A = "['’]"; // straight or curly apostrophe
@@ -314,7 +314,6 @@ export const RULES = [
   // ── Punctuation and formatting ────────────────────────────────────────────
   {
     id: 'em-dash',
-    lang: 'any',
     category: 'punctuation',
     severity: 'medium',
     voiceKey: 'emDash',
@@ -325,7 +324,6 @@ export const RULES = [
   },
   {
     id: 'invisible-character',
-    lang: 'any',
     category: 'punctuation',
     severity: 'high',
     pattern: /[​-‍⁠﻿]/g,
@@ -334,7 +332,6 @@ export const RULES = [
   },
   {
     id: 'emoji-bullet',
-    lang: 'any',
     category: 'format',
     severity: 'medium',
     voiceKey: 'emoji',
@@ -344,7 +341,6 @@ export const RULES = [
   },
   {
     id: 'emoji-hype',
-    lang: 'any',
     category: 'format',
     severity: 'low',
     voiceKey: 'emoji',
@@ -356,7 +352,6 @@ export const RULES = [
   },
   {
     id: 'hashtag-block',
-    lang: 'any',
     category: 'format',
     severity: 'medium',
     pattern: /(?:^|\n)[ \t]*(?:#[\p{L}\d_]+[ \t]*){3,}[ \t]*(?=\n|$)/gu,
@@ -377,7 +372,6 @@ export const RULES = [
   // ── Structure checks (computed, not regex) ────────────────────────────────
   {
     id: 'uniform-rhythm',
-    lang: 'any',
     category: 'structure',
     severity: 'medium',
     check: (text, ctx) => {
@@ -397,7 +391,6 @@ export const RULES = [
   },
   {
     id: 'staccato',
-    lang: 'any',
     category: 'structure',
     severity: 'medium',
     check: (text, ctx) => {
@@ -416,7 +409,6 @@ export const RULES = [
   },
   {
     id: 'broetry',
-    lang: 'any',
     category: 'structure',
     severity: 'medium',
     channels: { blog: 1.5, newsletter: 1.5, academic: 1.5, 'cover-letter': 1.5 },
@@ -431,7 +423,6 @@ export const RULES = [
   },
   {
     id: 'listicle-three',
-    lang: 'any',
     category: 'structure',
     severity: 'low',
     check: (text) => {
@@ -460,7 +451,6 @@ export const RULES = [
   },
   {
     id: 'title-case-heading',
-    lang: 'any',
     category: 'format',
     severity: 'low',
     cap: 2,
@@ -478,7 +468,6 @@ export const RULES = [
   },
   {
     id: 'bold-overuse',
-    lang: 'any',
     category: 'format',
     severity: 'low',
     check: (text, ctx) => {
