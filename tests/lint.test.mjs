@@ -55,3 +55,10 @@ test('channel weights: hashtag-free engagement question costs more on LinkedIn t
   const t = 'We cut our meeting load in half by dropping the Monday sync and writing a short update instead. What do you think?';
   assert.ok(lint(t, { channel: 'linkedin' }).score > lint(t, { channel: 'blog' }).score);
 });
+
+test('listicle-three fires on exactly three items, not on four', () => {
+  const three = 'What we changed:\n- the pricing page\n- the onboarding email\n- the trial length\n\nSales went up.';
+  const four = 'What we changed:\n- the pricing page\n- the onboarding email\n- the trial length\n- the demo script\n\nSales went up.';
+  assert.ok(lint(three).findings.some((f) => f.rule === 'listicle-three'));
+  assert.ok(!lint(four).findings.some((f) => f.rule === 'listicle-three'));
+});

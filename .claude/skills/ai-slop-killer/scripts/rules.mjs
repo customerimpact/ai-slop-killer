@@ -425,7 +425,7 @@ export const RULES = [
     severity: 'low',
     check: (text) => {
       const out = [];
-      const re = /:[ \t]*\n(?:[ \t]*\n)?((?:[ \t]*(?:\d+[.)]|[-*•])[ \t].+\n?){3})(?![ \t]*(?:\d+[.)]|[-*•])[ \t])/g;
+      const re = /:[ \t]*\n(?:[ \t]*\n)?((?:[ \t]*(?:\d+[.)]|[-*•])[ \t][^\n]+(?:\n|$)){3})(?![ \t]*(?:\d+[.)]|[-*•])[ \t])/g;
       for (const m of text.matchAll(re)) out.push({ index: m.index, match: m[1].split('\n')[0].trim() + ' …' });
       return out;
     },
