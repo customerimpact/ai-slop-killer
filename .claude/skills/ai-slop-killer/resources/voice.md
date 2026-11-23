@@ -5,7 +5,7 @@
 1. **Collect 3–5 samples of the writer's own work**, ideally written before they used AI tools: posts, emails, articles. Files in `context/` count. If they paste them, save each to `context/samples/<name>-<n>.md`.
 2. **Run:**
    ```
-   node .claude/skills/ai-slop-killer/scripts/ai-slop-killer.mjs voice <name> <sample files...>
+   node <skill-dir>/scripts/ai-slop-killer.mjs voice <name> <sample files...>
    ```
    This writes `context/voice/<name>.json`, which the scanner uses, and `context/voice/<name>.md`, which I use. It measures:
    - sentence length and how much it varies

@@ -26,8 +26,10 @@ Text with no instruction gets a **check**. "Audit this" on a sales page, funnel,
 The scanner is a fast, fixed rule check, so it gives the same result every time. **Run it first, on the exact text:**
 
 ```
-node .claude/skills/ai-slop-killer/scripts/ai-slop-killer.mjs lint <file> --channel <channel> [--voice <name>] --json
+node <skill-dir>/scripts/ai-slop-killer.mjs lint <file> --channel <channel> [--voice <name>] --json
 ```
+
+`<skill-dir>` is the folder this SKILL.md is in: `.claude/skills/ai-slop-killer` inside a project, or `~/.claude/skills/ai-slop-killer` when installed for the user. Every command in my resource files uses the same folder.
 
 - Save pasted text to `audits/.tmp/input.md` first. Use the user's file directly when they give one.
 - **Channel** is one of `linkedin`, `x`, `blog`, `newsletter`, `email`, `cold-email`, `cover-letter`, `academic`, `sales` or `general`. Infer it from the text. Say it in the first line of the report, and re-run if the user corrects it.

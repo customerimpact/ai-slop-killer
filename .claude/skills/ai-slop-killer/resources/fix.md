@@ -39,7 +39,7 @@ Specific detail is what makes writing sound human, and only the writer has it. L
 Save the rewrite to `audits/<piece>-fix-YYYY-MM-DD.md` (or only to the path the user names), then run:
 
 ```
-node .claude/skills/ai-slop-killer/scripts/ai-slop-killer.mjs compare <original> <rewrite> --channel <channel> [--voice <name>] --json
+node <skill-dir>/scripts/ai-slop-killer.mjs compare <original> <rewrite> --channel <channel> [--voice <name>] --json
 ```
 
 - **The rewrite must score lower and have zero high findings.** If it doesn't, fix what remains and compare again. Do this once at most. Anything still left gets one honest line under the rewrite.
